@@ -37,7 +37,6 @@ namespace BookShelf.Models
 
         public virtual ICollection<Book> BooksAuthored { get; set; }
         public ApplicationUser User { get; set; }
-
-        
+        public string UserId { get; set; }
     }
 }

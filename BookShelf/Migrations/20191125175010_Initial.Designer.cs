@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShelf.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191125171637_Initial")]
+    [Migration("20191125175010_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,7 +98,7 @@ namespace BookShelf.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "88ccb082-e06a-4160-96a6-1da2a50b43d5",
+                            ConcurrencyStamp = "80764bea-0ae5-4882-8ee4-f28289e80edb",
                             Email = "admin@admin.com",
                             EmailConfirmed = true,
                             FirstName = "admin",
@@ -106,7 +106,7 @@ namespace BookShelf.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENJ6ie0pIrrmR4TLjs1AxmjpkeaHektDXqlvFVoqigR4Ctp8N6Pj99JuaKeRU0X0Ow==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELsTYhqvSTfZaLK3pUumT41TY4dIiXpSzCLB+LSAz6TXv8THpTGpbyiOxNyT1lTgIg==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
                             TwoFactorEnabled = false,
@@ -144,7 +144,7 @@ namespace BookShelf.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("authors");
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("BookShelf.Models.Book", b =>
