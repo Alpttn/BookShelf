@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using BookShelf.Data;
 using BookShelf.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace BookShelf.Controllers
 {
@@ -15,16 +16,22 @@ namespace BookShelf.Controllers
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public BooksController(ApplicationDbContext context)
+        public BooksController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Books
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Books.Include(b => b.Author);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+
+            var applicationDbContext = _context.Authors
+                                               .Include(c => c.User)
+                                               .Where(c => c.UserId == user.Id);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -63,6 +70,8 @@ namespace BookShelf.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                book.Owner = user;
                 _context.Add(book);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
