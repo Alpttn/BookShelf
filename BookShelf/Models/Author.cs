@@ -35,7 +35,7 @@ namespace BookShelf.Models
         [Display(Name = "Preferred Genre")]
         public string PreferredGenre { get; set; }
 
-        public List<Book> BooksAuthored { get; set; }
+        public virtual ICollection<Book> BooksAuthored { get; set; }
         public ApplicationUser User { get; set; }
 
         

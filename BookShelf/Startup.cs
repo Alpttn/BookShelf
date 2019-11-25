@@ -12,6 +12,7 @@ using BookShelf.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using BookShelf.Models;
 
 namespace BookShelf
 {
